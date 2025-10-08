@@ -17,7 +17,13 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+// ✅ Allow CORS from frontend (React on port 3000)
+app.use(
+  cors({
+    origin: "http://localhost:3000", // frontend URL
+    credentials: true, // allow cookies / tokens if needed
+  })
+);
 app.use(express.json());
 
 // Routes
